@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./apiFileUpload
+    restart: "always"
+    env_file: "./apiFileUpload/apiFileUpload/.env.example"
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"  
+  
+  frontend:
+    build: ./frontend
+    restart: "always"
+    ports:
+      - "8080:80"
